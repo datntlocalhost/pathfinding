@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="pathfinding/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <span  class="navbar-brand mb-0 h1" href="#">Pathfinding Visualizer</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Maze Generator
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" onclick="btnMazeGeneratorClick();">Recursive Division</a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Algorithms
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#" onclick="btnAlgorithmClick(0);">A*</a>
+              <a class="dropdown-item" href="#" onclick="btnAlgorithmClick(1);">Dijkstra's</a>
+            </div>
+          </li>
+          <li class="nav-item">
+              <span id="algorithm-name" class="navbar-text">
+                A*
+              </span>
+          </li>
+        </ul>
+      <button class="btn btn-outline-success" type="button" onclick="btnStartFindingClick();">Visualize</button>
+      <button class="btn btn-outline-success" type="button" onclick="btnClearGridClick();">Clear Grid</button>
+      <button class="btn btn-outline-success" type="button" onclick="btnClearWallClick();">Clear Wall</button>
+      <button class="btn btn-outline-success" type="button" onclick="btnClearPathClick();">Clear Path</button>
+      </div>
+    </nav>
+
+    <!-- Main text -->
+    <div id="main-text">
+      <ul>
+        <li class="nav-item">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          Start Node
+        </li>
+        <li class="nav-item">
+          <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+          Target Node
+        </li>
+      </ul>
+
+      <ul>
+        <li class="nav-item">
+          <div style="display: inline;">
+            <span class="square visited"></span>
+            <span class="square unvisited"></span>
+            Checked Node
+          </div>
+        </li>
+        <li class="nav-item">
+          <div style="display: inline;">
+            <span class="square visiting"></span>
+            Checking Node
+          </div>
+        </li>
+      </ul>
+      <ul>
+        <li class="nav-item">
+          <div style="display: inline;">
+            <span class="square path"></span>
+            Unchecked Node
+          </div>
+        </li>
+        <li class="nav-item">
+          <div style="display: inline;">
+            <span class="square wall"></span>
+            Wall Node
+          </div>
+        </li>
+      </ul>
+      <ul>
+        <li class="nav-item">
+          <div style="display: inline;">
+            <span class="square walk"></span>
+            Shortest-path Node
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="des">Ctrl + Left-mouse to draw wall,  Alt + Left-mouse to eraser wall</div>
+    <div id="algorithm-des">
+    </div>
+
+    <!-- Grid container -->
+    <div id="grid"></div>
+
+    <!-- Script -->
+    <script src="pathfinding/matrix.js"></script>
+    <script src="pathfinding/constants.js"></script>
+    <script src="pathfinding/models.js"></script>
+    <script src="pathfinding/utils.js"></script>
+    <script src="pathfinding/algorithm.js"></script>
+    <script src="pathfinding/main.js"></script>
+  </body>
+</html>
